@@ -1,0 +1,61 @@
+{% load static %}
+
+<html>
+<head>
+<title>Django blog - Yan Chota :D </title>
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<header>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col 12">
+
+        <h1><a href="{% url 'home' %}">Django blog - Yan CHota</a></h1>
+        <br>
+        </div>
+
+        <div class="nav-right">
+        <a href="{% url 'post_new' %}">+ New Blog Post</a>
+        </div>
+
+
+    </div>
+</div>
+
+
+</header>
+
+
+<div class="container">
+<div class="row">
+<div class="col 12">
+
+    {% if user.is_authenticated %}
+
+    <p> Hola, {{user.username}}! </p>
+    <p> <a href = " {% url 'logout' %}" > Cerrar sesión </a> </p>
+
+
+    {% else %}
+
+        <p> No has iniciado sesión </p>
+
+        <a href = " {% url 'login' %}" > Iniciar Sesión </a>
+
+    {% endif %}
+
+
+{% block content %}
+{% endblock content %}
+</div>
+</div>
+</div>
+
+<script src="{% static 'js/bootstrap.js' %}" ></script>
+<script src="{% static 'js/bootstrap.bundle.js' %}" ></script>
+
+</body>
+</html>
